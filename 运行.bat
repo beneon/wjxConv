@@ -1,1 +1,1 @@
-python demo.py
+python conv.py
