@@ -11,7 +11,7 @@ import re
 os.chdir('data')
 filelist = os.listdir()
 # 下面分别是获取xls文件和zip文件的文件名
-[xlsfile] = [e for e in filelist if os.path.splitext(e)[1] == '.xls']
+[xlsfile] = [e for e in filelist if os.path.splitext(e)[1] == '.xlsx']
 [zipfilepath] = [e for e in filelist if os.path.splitext(e)[1] == '.zip']
 
 # 先将zip包解压缩
