@@ -7,8 +7,9 @@ import snoop
 import re
 
 # 问卷数据下载后是xls文件, 附件压缩包是zip文件, 两者和代码放在同一个文件夹中
-# 列出当前文件夹下面所有的文件
-os.chdir('data')
+# 转换工作文件夹，列出当前文件夹下面所有的文件
+cwd = r"D:\users\ben\CloudStation\护理学院工作\教学\spss软件实验\2020备课\practice1\口创"
+os.chdir(cwd)
 filelist = os.listdir()
 # 下面分别是获取xls文件和zip文件的文件名
 [xlsfile] = [e for e in filelist if os.path.splitext(e)[1] == '.xlsx']
@@ -36,9 +37,13 @@ else:
             with zip_ref.open(fn, 'r') as original_file:
                 shutil.copyfileobj(original_file, output_file)
 
+# zip文档内容，是文件名列表
+zip_content = os.listdir(unzip_dir)
+
 # 然后是读取Excel文件
 # 声明filename extract函数
-reIdNumberName = re.compile(r"(\d+)_(\d+)_(.*)")
+reIdNumberName_dep = re.compile(r"(\d+)_(\d+)_(.*)")
+reIdNumber = re.compile(r"(\d+)_(.*)")
 
 def fileNameExtractor(row,url_header:str,name_header:str):
     # get the query string, like: path=http%3a%2f%2fpubuserqiniu.paperol.cn%2f37299324_1_q4_pDJ5pCCKECzTxAdqQLyuw.docx%3fattname%3d1_4_%25e5%25ae%259e%25e9%25aa%258c%25e6%258a%25a5%25e5%2591%258a.docx&activity=37299324
@@ -53,10 +58,12 @@ def fileNameExtractor(row,url_header:str,name_header:str):
     # parse_qs this string to get the encoded string of file
     attname = ups.parse_qs(query2)['attname'][0]
     snoop.pp(attname)
-    mo = reIdNumberName.match(attname)
+    mo = reIdNumber.match(attname)
     if mo is None:
         print(f"{attname} 格式不对")
-    conv_filename = f"序号{mo.group(1)}_{row[name_header]}_{mo.group(2)}_{mo.group(3)}"
+    # conv_filename = f"序号{mo.group(1)}_{row[name_header]}_{mo.group(2)}_{mo.group(3)}"
+    file_name_prefix = re.compile(f"序号{mo.group(1)}_.*")
+    [conv_filename] = [e for e in zip_content if file_name_prefix.match(e)]
     # 最后是从url中提取了问卷的activity Id和对应的上传文件文件名, 然后按照Excel中hyperlink公式的格式形成公式
     # rst = '=HYPERLINK("./{}_附件/{}","作业链接")'.format(activityStr, docxFileName)
 
