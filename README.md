@@ -1,6 +1,6 @@
 # 基于在线问卷的随堂作业收集系统
 
-佛山科学技术学院口腔医学院口腔系制作
+佛山科学技术学院口腔医学院口腔系制作，[相关研究](http://med.wanfangdata.com.cn/Paper/Detail/PeriodicalPaper_zhkqyxyjzz202005008)
 
 ## 2020-02-25更新
 
