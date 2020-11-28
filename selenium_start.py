@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.common.action_chains import ActionChains
@@ -70,7 +69,10 @@ if elem_wait_for_attach_download:
 if elem_wait_for_attach_pack:
     driver.find_element_by_xpath('//table[@id="ctl02_ContentPlaceHolder1_tbSummary"]/tbody/tr[1]/td[2]/a').click()
 
-
+# future dev：1. 能否知道文件是否已经下载完成？
+# 对于下载的文件，找到最新的几个文件的方式是：
+# list_of_files=glob.glob(os.path.expanduser(r'~\Downloads\*'))
+# sorted(list_of_files,key=os.path.getctime)
 
 
 # assert "Python" in driver.title
