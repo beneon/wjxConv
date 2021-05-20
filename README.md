@@ -15,9 +15,9 @@
 ## 2020-11-28准备软件著作权申报
 
 TODO:
-1. 将repo转为private
-2. 利用selenium登录问卷星账号
-3. 实现下载附件，下载数据文件
+1. 将repo转为private(已经提交了软著申请，所以现在又改回来了）
+2. 利用selenium登录问卷星账号（实用性不强，算了）
+3. 实现下载附件，下载数据文件（同上）
 
 ## 2021-05-20 添加了问卷内容导出为多个docx文件的功能
 
@@ -27,3 +27,4 @@ TODO:
 此外，定义问卷数据和zip所在文档的代码单独移动到了path_definition.py里面
 生成word文档的代码放到了generate_report_with_data.py里面
 
+顺带一提，xlrd现在不支持读取xlsx文件了，[我今天才发现](https://stackoverflow.com/questions/65254535/xlrd-biffh-xlrderror-excel-xlsx-file-not-supported)，就很无语。现在这个repo的代码已经把读取excel的库从xlrd替换成了openpyxl，但是之前有太多涉及读取excel的代码都是用的xlrd这个库……我现在终于对代码维护这个事情有了一点点实质性的体验了……
