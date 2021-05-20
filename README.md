@@ -19,3 +19,11 @@ TODO:
 2. 利用selenium登录问卷星账号
 3. 实现下载附件，下载数据文件
 
+## 2021-05-20 添加了问卷内容导出为多个docx文件的功能
+
+现在的运行顺序是先运行conv.py解压缩zip文件，建立_conv.xlsx表格
+然后是运行answer_sheet2word_doc.py，将各个问题和回答形成docx文档，并且在_conv.xlsx中做链接，同时增加计分项（word文档分和上传文件分），并且做一个总分计算公式
+这里还考虑到延迟交作业的问题，所以设置了一个截止时间（开始提交以后的7天），如果超过截止时间设置一个分数乘0.8的惩罚
+此外，定义问卷数据和zip所在文档的代码单独移动到了path_definition.py里面
+生成word文档的代码放到了generate_report_with_data.py里面
+
