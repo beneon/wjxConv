@@ -1,5 +1,9 @@
 # 基于在线问卷的随堂作业收集系统
 
+## 2024-07-24
+
+**本代码库早就已经停止更新了，最近为了用问卷星数据制作实验报告，重新写了一次代码，现在的代码库在[wjx_conv_v2](https://github.com/beneon/wjx_conv_v2)**
+
 佛山科学技术学院口腔医学院口腔系制作，[相关研究](http://med.wanfangdata.com.cn/Paper/Detail/PeriodicalPaper_zhkqyxyjzz202005008)
 
 ## 2020-02-25更新
